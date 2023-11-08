@@ -4,21 +4,30 @@ class Animal:
             self,
             animal_type: str,
             animal_sound: str,
-            feeding: Literal ["травоядное", "хищное", "всеядное"]
+            feeds: Literal ["травоядное", "хищное", "всеядное"]
                 ):
         self.animal_type = animal_type
+        self.feeds = feeds
         self.animal_sound = animal_sound
-        self.feeding = feeding
 
     def __str__(self)->str:
-        return f"Это {self.feeding} животное {self.animal_type}."
+        return f'Это {self.feeds} животное {self.animal_type}!'
+
     def sound(self) -> str:
-        return f"{self.animal_type} издает следующие звуки {self.animal_sound}."
+        return f'{self.animal_type} издает звуки {self.animal_sound}!'
+
+    def feed(self) -> str:
+        return f'{self.animal_type} кушает {self.feeds}!'
+
     
 cat = Animal ("Кот", "мяу", "всеядное")
-giraf = Animal ("жираф", "х-ы-ы", "травоядное")
-hyena = Animal("гиена", "м-у-у-у-в", "хищное")
-
 print (cat, cat.sound())
+print (cat, cat.feed())
+
+giraf = Animal ("жираф", "х-ы-ы", "травоядное")
 print (giraf, giraf.sound())
+print (giraf, giraf.feed())
+
+hyena = Animal("гиена", "м-у-у-у-в", "хищное")
 print (hyena, hyena.sound())
+print (hyena, hyena.feed())
