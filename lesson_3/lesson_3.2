@@ -1,0 +1,51 @@
+class Greenhouse:
+    def __init__(self,
+                 temperature=15,
+                 humidity=50,
+                 light_level=25
+                 ):
+        self.__temperature = temperature
+        self.__humidity = humidity
+        self.__light_level = light_level
+
+    @property
+    def temperature(self):
+        return self.__temperature
+
+    @temperature.setter
+    def temperature(self, temperature):
+        if not (15 <= temperature <= 30):
+            raise ValueError("Данная температура критическая")
+        else:
+            self.__temperature = temperature
+            print(f"Комфортная температура: {self.__temperature}")
+
+    @property
+    def humidity(self):
+        return self.__humidity
+
+    @humidity.setter
+    def humidity(self, humidity):
+        if not (50 <= humidity <= 60):
+            raise ValueError("Влажность критическая")
+        else:
+            self.__humidity = humidity
+            print(f"Комфортная влажность: {self.__humidity}")
+
+    @property
+    def light_level(self):
+        return self.__light_level
+
+    @light_level.setter
+    def light_level(self, light_level):
+        if not (10 <= light_level <= 27):
+            raise ValueError("Уровень света критический")
+        else:
+            self.__light_level = light_level
+            print(f"Комфортный уровень света: {self.__light_level}")
+
+
+my_greenhouse = Greenhouse()
+my_greenhouse.temperature = 25
+my_greenhouse.humidity = 52
+my_greenhouse.light_level = 10

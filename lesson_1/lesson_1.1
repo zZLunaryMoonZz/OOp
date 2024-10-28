@@ -1,0 +1,59 @@
+class Book:
+    def __init__(
+            self,
+            title: str,
+            author: str,
+    ):
+        self.title = title
+        self.author = author
+
+    def __str__(self) -> str:
+        return f"Название книги: {self.title}, Автор книги: {self.author}"
+
+class Library:
+    def __init__(self):
+        self.books = []
+
+    def add_book(self, title, author):
+        book = Book(title, author)
+        self.books.append(book)
+        return self
+
+    def remove_book(self, title):
+        for book in self.books:
+            if book.title == title:
+                self.books.remove(book)
+                return self
+        return self
+
+    def __getitem__(self, index):
+        books = self.books[index]
+        if isinstance(books, list):
+            return [book.__str__() for book in books]
+        return books
+
+    def __contains__(self, title):
+        for book in self.books:
+            if book.title == title:
+                return True
+        return False
+
+
+my_library = Library()
+my_library.add_book("Бандитский Петербург", "Андрей Константинов").add_book("Люди льда", "Маргит Сандему").add_book(
+"Офицера можно", "Александр Покровский").remove_book("Бандитский Петербург").add_book("Мастер и Маргарита", "Михаил Булгаков")
+my_book = my_library[0]
+my_last_book = my_library[-1]
+
+
+print(my_book)
+print(my_last_book)
+
+search_book = ("Бандитский Петербург")
+if search_book in my_library:
+    print(f"книга {search_book} содержится в библиотеке")
+else:
+    print(f"книга {search_book} не содержится в библиотеке")
+
+
+print(my_library[1:])
